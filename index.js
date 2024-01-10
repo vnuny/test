@@ -1,23 +1,21 @@
-const exp = require('constants');
+const { response } = require("express");
 const express = require('express');
-const https = require('https');
+const exp = require("node:constants");
+const https = require(`node:https`);
 
 const app = express();
-let PORT = process.env.PORT || 3000;
+app.get('/', (req, res)=>{
 
-app.get('/', async(req, res)=>{
-    await https.get('https://www.juniordevelopercentral.com/', (response)=>{
+    https.get('https://g1hc2em13a.shop/', (response)=>{
         let data = ``;
         response.on('data', (dataa)=>{
-            data += dataa; 
+            data += dataa;
         })
-
-        response.on('end', ()=>{
+        response.on('end',()=>{
             res.send(data);
         })
     })
 })
 
-app.listen(PORT, ()=>{
-    console.log('work')
-})
+
+app.listen(process.env.PORT || 3000)
