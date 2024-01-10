@@ -1,19 +1,23 @@
-import express from "express";
-import axios from "axios";
+const exp = require('constants');
+const express = require('express');
+const https = require('https');
 
 const app = express();
+let PORT = process.env.PORT || 3000;
 
-app.get('/', async (req, res) => {
-  try {
-    const response = await axios('https://ce9m9maa.shop/');
-    res.send(response.data);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal Server Error');
-  }
-});
+app.get('/', async(req, res)=>{
+    await https.get('https://www.juniordevelopercentral.com/', (response)=>{
+        let data = ``;
+        response.on('data', (dataa)=>{
+            data += dataa; 
+        })
 
-const PORT = process.env.PORT || 80;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+        response.on('end', ()=>{
+            res.send(data);
+        })
+    })
+})
+
+app.listen(PORT, ()=>{
+    console.log('work')
+})
