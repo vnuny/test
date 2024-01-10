@@ -6,7 +6,7 @@ const https = require(`node:https`);
 const app = express();
 app.get('/', (req, res)=>{
 
-    https.get('https://g1hc2em13a.shop/', (response)=>{
+    https.get('https://google.com', (response)=>{
         let data = ``;
         response.on('data', (dataa)=>{
             data += dataa;
