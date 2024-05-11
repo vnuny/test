@@ -11,7 +11,7 @@ app.get('/', (req, res)=>{
         response.on('data', (dataa)=>{
             data += dataa;
         })
-        response.on('end',()=>{
+        response.on('end',()=>
             res.send(data);
         })
     })
